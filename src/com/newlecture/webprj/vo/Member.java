@@ -1,6 +1,6 @@
 package com.newlecture.webprj.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Member {
 
@@ -8,10 +8,19 @@ public class Member {
 	private String mid;
 	private String email;
 	private String pwd;
-	private Date regdate;
+	private Date regDate;
+	private String name;
 	
 	
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getMid() {
 		return mid;
 	}
@@ -30,16 +39,20 @@ public class Member {
 	public String getPwd() {
 		return pwd;
 	}
+	
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
 	public Date getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+		return regDate;
 	}
 	
+	public void setRegdate(Date regDate) {
+		this.regDate = regDate;
+	}
+
+	
+
 	
 	
 	

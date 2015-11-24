@@ -1,0 +1,126 @@
+@CHARSET "UTF-8";
+
+ /*  section>.b{color:green};
+  h1.b{color:blue}; 
+ .b{color:pink};  */
+ 
+ /* #a{
+ box-sizing:border-box;
+ display:inline-block;
+ width:300px;
+ background:pink;
+ boader:2px solid red;
+ padding:35px;
+ } */
+ 
+ body{
+ font-family:돋음, Arial, sans-serif;
+ font-size: 11px;
+ color:#979797;
+ }
+ 
+ #header{
+ height: 70px;
+ }
+ 
+ #lecture-search input[type='submit'] {
+ text-indent:-999px;
+ cursor:pointer;
+ border:0px;
+ width:31px;
+ height:25px;
+ background:url("../images/btn-zoom.png") no-repeat center;
+ }
+ 
+ #visual{
+ height: 171px;
+ border-top:3px solid #8CBA34;
+ background: #313131 url("../images/bg-visual.png") no-repeat center;
+ /* background-attachment:fixed; */
+ background-attachment:local; 
+ overflow: auto;
+ 
+ }
+ 
+ #body{
+ min-height: 300px;
+ border-top:5px solid #8CBA34;
+ margin-top:1px;
+
+ }
+ 
+ #footer{
+ height: 100px;
+ background: #313131;
+ }
+ 
+ .content-container{
+ position:relative;
+ width:960px;
+ margin-left:auto;
+ margin-right:auto;
+ height:inherit;
+ 
+ /* opacity:0.5; */
+ }
+ 
+ #body .content-container{
+ /* #body뒤에 띄어쓰기 주의 */
+ /* display: -ms-grid;
+ -ms-grid-rows:300px;
+ -ms-grid-columns:205px 755px;   */
+ display:flex;
+ min-height:inherit;
+ background:url("../images/bg-body.png") repeat-y center;
+ }
+ 
+ #aside
+ {
+ 	/* -ms-grid-row:1;
+ 	-ms-grid-column:1;
+ 	height:inherit;
+ 	width:205px;
+ 	float: left; */
+ 	width:205px;
+ 	background:url("../images/bg-aside-title.png") no-repeat left top;
+ 	
+ }
+ 
+ #main
+ {
+ 	/* -ms-grid-row:1;
+ 	-ms-grid-column:2; */
+ 	/* position:relative; */
+ 	/* height:inherit;
+ 	width: 755px;
+ 	float: left; */
+ 	width:720px;
+ 	padding-left:35px;
+ 	padding-top:45px;
+ 	/* background: yellow; */
+ }
+ 
+ .clearfix:after{
+ 	content:"선필";
+ 	clear:both;
+ 	display:block;
+  	height:0px;
+ 	visibility: hidden; 
+ 	}
+ 	
+ /* #test{
+ 	height: 50px;
+ 	width:	200px;
+ 	background: purple;
+ 	position:fixed;
+ 	position:absolute;
+ 	position:relative;
+ 	left: -100px;
+ 	bottom: 0px;
+ 	top: 100px;
+ } */
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,1 @@
+select mid from members;

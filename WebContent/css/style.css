@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+#header{
+   height:70px;
+}
+
+#lecture-search input[type ='submit'] {
+   width:31px;
+   height:25px;
+   background: url("../images/btn-zoom.png") no-repeat center;
+   border:0px;
+   cursor:pointer;
+   text-indent:-999px;
+}
+
+#visual{
+   height:171px;   
+   background:#313131 url("../images/bg-visual.png") no-repeat center;
+   border-top:3px solid #8CBA34; 
+   /* background-attachment:fixed; */
+   overflow:auto;
+}
+
+body{
+   font-family: 돋움, Arial, sans-serif;
+   font-size: 11px;
+   color:#979797;
+}
+
+#body{
+   min-height:300px;   
+   border-top:5px solid #8CBA34;
+   margin-top:1px;
+
+}
+
+#body .content-container{
+   display:flex;
+   min-height:inherit;
+   /* display: -ms-grid;
+   -ms-grid-rows: 300px;
+   -ms-grid-columns : 205px 755px;  */
+   background:url("../images/bg-body.png") repeat-y center;
+   
+}
+
+#footer{
+   height:100px;   
+   background:#313131;
+}
+
+.content-container{
+   width:960px;
+   margin-left:auto;
+   margin-right:auto;
+   height:inherit;
+   /* opacity:0.5; */
+   position:relative;
+}
+
+
+
+#aside{
+   /* -ms-grid-row:1;
+   -ms-grid-column:1;
+   float:left; 
+   min-height:inherit;*/
+   width:205px;
+   /* background:red; */
+   background:url("../images/bg-aside-title.png") no-repeat left top;
+}
+
+#main{
+   /* grid-row:1;
+   grid-column:2;
+   float:left; 
+   min-height:inherit;*/
+   width:720px;/* 755px; */
+   padding-left:35px;
+   padding-top:45px;
+   /* background:green; */
+}
+
+.clearfix:after{
+   content:".";
+   clear:both;
+   display:block;
+   height:0px;
+   visibility:hidden;
+   
+}
+
+#test{
+   height:50px;
+   width:200px;
+   background:purple;
+   left:-100px;
+   top:100px;
+   position:absolute;
+}
+
+#container{
+   display:flex;
+   flex-flow:column wrap;
+   background:grey;
+   height:400px;
+
+}
+
+#container >  div{
+   width:200px;
+   height:200px;
+   border:1px solid pink;
+   background:skyblue;
+}
