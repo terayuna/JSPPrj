@@ -1,114 +1,225 @@
 @CHARSET "UTF-8";
-#header{
-   height:70px;
+
+body{
+   font-family:돋움, Arial, sans-serif;
+   font-size:12px;
+   color: #979797;   
 }
 
-#lecture-search input[type ='submit'] {
+.content-container{
+   margin-left : auto; /* 왼쪽에 margin, 즉 오른쪽정렬 */
+   margin-right : auto; /* 오른쪽에 margin, 즉 왼쪽정렬 */
+   width : 960px;
+   height : inherit; /* 부모의 값을 상속 */
+   /* opacity : 0.5; 투명도 */   
+}
+
+.clearfix:after 
+{
+   /*after : 막내자식 - 가상의 자식을 만들어줌으로써 본문내용이 늘어나도 페이지 크기가 늘어나게 한다*/
+   content: ".";
+   clear:both;
+   display: block;
+   height: 0px;
+   visibility: hidden;   
+}
+
+.hidden{
+   /* display:공간도 없앰 / visibility:공간은 존재하되 보이지만 않음 */
+   display: none; 
+   /* visibility: hidden; */ 
+}
+
+/* -- #header ----------------------------------------------------------- */
+#header{
+   min-height:70px;   
+}
+
+#main-menu > ul > li{
+   float:left;
+   padding-left: 24px;   
+   background:url("../images/bg-main-menu-vsp.png") no-repeat 13px center;
+}
+   
+   #main-menu > ul > li:FIRST-CHILD{
+      /* FIRST-CHILD:첫번째 자식에 대한 속성 */
+      padding-left:0px;
+      background: none;   
+   }
+
+   #main-menu > ul > li > a{
+      font-family:맑은 고딕, sans-serif;
+      font-size:15px;
+      font-weight:bold;
+      color: #000;
+      text-decoration:none;            
+   }
+   
+   #main-menu > ul > li > a:HOVER{
+      /* HOVER : 마우스 올렸을 때 */
+      text-decoration: underline;
+      color:red;
+   }
+--------------------------------------------------
+#join-menu{
+	border:1px solid red;
+	display:inline-block;
+}
+---------------------------------------------------
+#join-menu > ul > li{
+   float: left;
+   padding-left: 9px;
+   background:url("../images/bg-main-menu-vsp.png") no-repeat 5px center;
+}
+
+   #join-menu > ul > li:FIRST-CHILD{
+      padding-left: 0px;
+      background: none;
+   }
+
+   #join-menu > ul > li > a{
+      font-family:맑은 고딕, sans-serif;
+      font-size:10px;
+      font-weight:bold;
+      color: inherit;
+      text-decoration: none;      
+   }
+   
+#member-menu > ul > li{
+   float: left;
+}
+
+#lecture-search{
+	width:308px;
+	height:25px;
+	border:5px solid #8CBA34;
+}
+
+#lecture-search fieldset > label,
+#lecture-search fieldset > input {
+	display:block;
+	float:left;
+}
+#lecture-search label{
+	display:block;
+	weight:55px;
+	height:25px;
+	line-height:25px;
+	font-weight:bold;
+	text-indent:5px;
+	float:left;
+}
+
+#lecture-search input[type='text']{
+	display:block;
+	width:calc(100% - 86px); /* 222px; (고정이냐 유동적(상위버전만 적용가능)이냐 */
+	height:25px;
+	border:0px;
+	float:left;
+	text-indent:5px;
+}
+
+
+#lecture-search input[type='submit']{   
+   display:block;
+   text-indent:-999px;
+   overflow:hidden;
+   cursor:pointer;
    width:31px;
    height:25px;
    background: url("../images/btn-zoom.png") no-repeat center;
    border:0px;
-   cursor:pointer;
-   text-indent:-999px;
+   border-left:1px solid #8CBA34;
+   float:left;
 }
 
+
+/* -- #viusal ----------------------------------------------------------- */
 #visual{
-   height:171px;   
+   height:171px;
    background:#313131 url("../images/bg-visual.png") no-repeat center;
-   border-top:3px solid #8CBA34; 
-   /* background-attachment:fixed; */
-   overflow:auto;
+   /* background:rgb(255,0,0); 10진수로 색표현 */
+   border-top : 6px solid #8CBA34; 
+   background-attachment:auto;
+   /* overflow: auto;    */
 }
 
-body{
-   font-family: 돋움, Arial, sans-serif;
-   font-size: 11px;
-   color:#979797;
-}
-
+/* -- #body ----------------------------------------------------------- */
 #body{
-   min-height:300px;   
-   border-top:5px solid #8CBA34;
-   margin-top:1px;
-
+   min-height:300px;
+   border-top : 6px solid #8CBA34;
+   margin-top: 1px;      
 }
 
-#body .content-container{
-   display:flex;
-   min-height:inherit;
-   /* display: -ms-grid;
-   -ms-grid-rows: 300px;
-   -ms-grid-columns : 205px 755px;  */
-   background:url("../images/bg-body.png") repeat-y center;
-   
-}
+   #body .content-container{
+      display : flex;
+      min-height : inherit;
+      
+      /* display: -ms-grid;
+      -ms-grid-rows : auto;
+      -ms-grid-columns : 205px 755px; */
+      background: url("../images/bg-body.png") repeat-y left top;
+   }
 
-#footer{
-   height:100px;   
-   background:#313131;
-}
-
-.content-container{
-   width:960px;
-   margin-left:auto;
-   margin-right:auto;
-   height:inherit;
-   /* opacity:0.5; */
-   position:relative;
-}
-
-
-
+/* -- #aside ----------------------------------------------------------- */
 #aside{
+   width:285px;
+   
    /* -ms-grid-row:1;
-   -ms-grid-column:1;
-   float:left; 
-   min-height:inherit;*/
-   width:205px;
-   /* background:red; */
+   -ms-grid-column:1; */
+   
+   /*float : left;
+    height:inherit;
+   width: 205px; */
    background:url("../images/bg-aside-title.png") no-repeat left top;
 }
 
+/* -- #main ----------------------------------------------------------- */
 #main{
-   /* grid-row:1;
-   grid-column:2;
-   float:left; 
-   min-height:inherit;*/
-   width:720px;/* 755px; */
-   padding-left:35px;
-   padding-top:45px;
-   /* background:green; */
-}
-
-.clearfix:after{
-   content:".";
-   clear:both;
-   display:block;
-   height:0px;
-   visibility:hidden;
+   width:720px;
+   padding-left: 25px;
+   padding-top: 35px;
+   
+   /* -ms-grid-row:1;
+   -ms-grid-column:2; */
+   
+   /* position : relative;
+   float : left;
+   margin-left : auto; 
+   height: inherit;
+   width : 755px; */
    
 }
 
-#test{
-   height:50px;
-   width:200px;
-   background:purple;
-   left:-100px;
-   top:100px;
-   position:absolute;
+   #main > h2{
+      font-family:맑은 고딕;
+      font-size:21px;
+      font-weight:bold;
+      color: #646464;
+      padding-left: 25px;
+      background:url("../images/icon-main-title.png") no-repeat left;      
+   }
+
+#notice-search input[type='submit']{
+   text-indent:-999px;
+   cursor:pointer;
+   border:0px;
+   width:49px;
+   height:23px;
+   background: url("../images/btn-search.png") no-repeat center;
 }
 
-#container{
-   display:flex;
-   flex-flow:column wrap;
-   background:grey;
-   height:400px;
-
+/* -- #footer ----------------------------------------------------------- */
+#footer{
+   height:100px;
+   background:#313131;
 }
 
-#container >  div{
-   width:200px;
-   height:200px;
-   border:1px solid pink;
-   background:skyblue;
+
+#test {
+   height: 50px;
+   width: 200px;
+   top: 100px;
+   left: 100px;
+   position: absolute;
 }
