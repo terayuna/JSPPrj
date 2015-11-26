@@ -35,6 +35,10 @@ body{
    min-height:70px;   
 }
 
+#main-menu {
+   border: 1px solid red;
+   display : inline-block;
+}
 #main-menu > ul > li{
    float:left;
    padding-left: 24px;   
@@ -60,12 +64,13 @@ body{
       text-decoration: underline;
       color:red;
    }
---------------------------------------------------
-#join-menu{
-	border:1px solid red;
-	display:inline-block;
+
+
+#join-menu {
+   border: 1px solid red;
+   display : inline-block;
 }
----------------------------------------------------
+
 #join-menu > ul > li{
    float: left;
    padding-left: 9px;
@@ -90,48 +95,50 @@ body{
 }
 
 #lecture-search{
-	width:308px;
-	height:25px;
-	border:5px solid #8CBA34;
-}
-
-#lecture-search fieldset > label,
-#lecture-search fieldset > input {
-	display:block;
-	float:left;
-}
-#lecture-search label{
-	display:block;
-	weight:55px;
-	height:25px;
-	line-height:25px;
-	font-weight:bold;
-	text-indent:5px;
-	float:left;
-}
-
-#lecture-search input[type='text']{
-	display:block;
-	width:calc(100% - 86px); /* 222px; (고정이냐 유동적(상위버전만 적용가능)이냐 */
-	height:25px;
-	border:0px;
-	float:left;
-	text-indent:5px;
-}
-
-
-#lecture-search input[type='submit']{   
-   display:block;
-   text-indent:-999px;
-   overflow:hidden;
-   cursor:pointer;
-   width:31px;
+   width:308px;
    height:25px;
-   background: url("../images/btn-zoom.png") no-repeat center;
-   border:0px;
-   border-left:1px solid #8CBA34;
-   float:left;
+   border:5px solid #8CBA34;
 }
+   
+   #lecture-search fieldset > label,
+   #lecture-search fieldset > input{
+      /* #lecture-search fieldset > * : hidden내용도 출력되므로 특정 범위 지정 */
+      /* inline은 크기를 맞춰줄 수 없으므로 block 사용 */
+      display: block;
+      float: left;
+   }
+   
+   #lecture-search label{
+      line-height:25px; /* 줄높이 */
+      text-indent:5px; /* 들여쓰기 */   
+      
+      font-weight:bold;
+            
+      width:55px;
+      height:25px;
+   }
+   
+   #lecture-search input[type='text']{      
+      width: calc(100% - 86px);/* 222px; */
+      height:25px;
+      border:0px;            
+   }
+
+   #lecture-search input[type='submit']{         
+      width:31px;
+      height:25px;
+      
+      /* border-right:0px;
+      border-top:0px;
+      border-bottom:0px; */
+      border:0px;
+      border-left:1px solid #8CBA34;
+      
+      text-indent:-999px;
+      cursor:pointer;
+      background: url("../images/btn-zoom.png") no-repeat center;
+   }
+
 
 
 /* -- #viusal ----------------------------------------------------------- */
@@ -199,6 +206,56 @@ body{
       padding-left: 25px;
       background:url("../images/icon-main-title.png") no-repeat left;      
    }
+   
+#notices{
+   width:720px;
+   border-top: 2px solid #8cba35;
+   table-layout: fixed;
+   width:100%;
+}
+
+#notices > thead > tr > th,
+#notices > tbody > tr > td
+{
+   height: 30px;
+   line-height: 30px;
+   width: 100px;
+   text-align: center;
+   border: 1px solid #e9e9e9;
+   border-collapse: collapse;
+}
+
+#notices > thead > tr > th:nth-child(4n+1),
+#notices > tbody > tr > td:nth-child(4n+1)
+{
+   width: 60px;
+}
+
+#notices > thead > tr > th:nth-child(2),
+#notices > tbody > tr > td:nth-child(2)
+{
+   width: 400px;
+}
+
+
+#notices > thead > tr > th {
+   background: #f5f5f5 url(../images/bg-title-sp.png)
+               no-repeat left center;
+   
+}
+
+#notices > thead > tr > th : first-child{
+   background: #f5f5f5;
+}
+
+#notices > tbody > tr > td:nth-child(2) {
+   text-align:left;
+   text-indent: 10px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+   
 
 #notice-search input[type='submit']{
    text-indent:-999px;
