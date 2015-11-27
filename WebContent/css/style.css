@@ -16,6 +16,8 @@ body{
    margin-right : auto; /* 오른쪽에 margin, 즉 왼쪽정렬 */
    width : 960px;
    height : inherit; /* 부모의 값을 상속 */
+   position:relative; 
+   
    /* opacity : 0.5; 투명도 */   
 }
 
@@ -47,12 +49,19 @@ body{
    min-height:70px;   
 }
 
-
+#logo{
+	position:absolute;
+	left:0px;
+	top:23px;
+}
 /* -----------------#header안에 #main-menu------------------ */
 
 /* #main-menu에  inline-block으로 설정 */
 #main-menu {
-   border: 1px solid red;
+   position:absolute;
+   left:200px;
+   top:27px; 
+   /* border: 1px solid red; */
    display : inline-block;
 }
 
@@ -99,8 +108,11 @@ body{
 
 /* #join-menu에  inline-block으로 설정 */
 #join-menu {
-   border: 1px solid red;
+   /* border: 1px solid red; */
    display : inline-block;
+   	position:absolute;
+    right:0px;
+    top:20px;
 }
 
 #join-menu > ul > li{
@@ -125,9 +137,14 @@ body{
    
 /* -----------------#header안에 #member-menu------------------ */
 
+#member-menu{
+	position:absolute;
+    right:0px;
+    top:40px;
+    }
 
 #member-menu > ul > li{
-   float: left;
+     float: left;
 }
 
 
@@ -139,6 +156,9 @@ body{
    width:308px;
    height:25px;
    border:5px solid #8CBA34;
+   position:absolute;
+   left:468px;
+   top:21px;
 }
    /* label과 input의 크기를 설정하기위해 block으로 설정 */
    #lecture-search fieldset > label,
@@ -197,7 +217,7 @@ body{
    /* background:rgb(255,0,0); 10진수로 색표현 */
    border-top : 6px solid #8CBA34; 
    background-attachment:auto;
-   background-attachment : fixed; 
+  /*  background-attachment : fixed; */ 
   /*이 속성은 기본이 scroll이다. 스크롤을 내리면 배경화면이 올라가서 안보이게 된다. 
   fixed로 설정하면, 스크롤을 내려도 배경화면은 그대로이다.*/
  
@@ -266,7 +286,10 @@ body{
       background:url("../images/icon-main-title.png") no-repeat left;      
    }
    
-   
+.aliign-container{
+	background:yellow;
+	text-align:right;	/* <div>로 감싸서 text-align으로 오른쪽 정렬 */
+}
    
 /* ----#body안의 #main안의 #notices-search------------------ */
 #notice-search input[type='submit']{

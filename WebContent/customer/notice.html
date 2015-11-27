@@ -11,7 +11,7 @@
 
    <header id="header">
       <div class="content-container">         
-                <h1> <img src="../images/logo.png" alt="newlecture"/> </h1>
+                <h1 id="logo"> <img src="../images/logo.png" alt="newlecture"/> </h1>
        
       <section>
          <h1 class="hidden">헤더</h1>
@@ -89,10 +89,11 @@
          
          <main id="main">
          <h2>공지사항</h2>
-         <h3>공지사항 검색</h3>
+        <div class="aliign-container">
+         <h3 class="hidden">공지사항 검색</h3>
          <form id="notice-search">
             <fieldset>
-               <legend>공지사항 검색 필드</legend>
+               <legend class="hidden">공지사항 검색 필드</legend>
                <label>분류</label> 
                <!-- select:콤보박스, option:콤보메뉴 --> 
                <select>
@@ -105,8 +106,9 @@
                <input type="submit" value="검색" />
             </fieldset>
          </form>
+         </div>
 
-         <h3>공지사항 테이블</h3>
+         <h3 class="hidden">공지사항 테이블</h3>
          <!-- thead:무조건 단일 사용/ tbody:중복가능,게시판의 공지사항부분과 글부분 나눌때 중복이 사용된다 -->
          <table id="notices">
             <thead>
