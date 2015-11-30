@@ -15,6 +15,9 @@
 </body>
 </html>
 
+
+<!-- 원래 html파일이였다가 jsp로 바꿈 -->
+
 <!-- html을 jsp로 바꾸면 한글이 깨짐: file->property->text file encoding->UTF-8 -->
 
 <!-- 실행 - 톰캣서버로 배포 - 톰캣 실행  - 사용자가 get요청 -->

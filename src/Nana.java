@@ -13,7 +13,7 @@ public class Nana extends HttpServlet
 		
 		
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		response.setContentType("text/html; charset=UTF-8");	
 		
 		/*OutputStream os = response.getOutputStream();
 		PrintWriter out = new PrintWriter(os,true);*/
@@ -32,4 +32,4 @@ public class Nana extends HttpServlet
 	} 
 }
 
-/*get요청(달라는게 있는 요청(옵션있음))의 입력- 주소 뒤에 ?cnt=20(쿼리 스트링)*/
+
