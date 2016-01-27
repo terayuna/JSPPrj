@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+@viewport{
+	width:auto;
+	zoom:1.0;
+	user-zoom:zoom;
+}
+
+
+@media all and (min-width:768px) and (max-width:1024px) {
+		#aside{
+			background:blue;
+		}
+		/* 햄버거버튼 */
+	}

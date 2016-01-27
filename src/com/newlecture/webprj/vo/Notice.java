@@ -1,6 +1,6 @@
 package com.newlecture.webprj.vo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Notice {
 	private String code;

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Insert title here</title>
+<style>
+	/* #container{
+		display:flex;
+		background:pink;
+		flex-flow:column;
+		flex-wrap:wrap; 
+		height:300px;
+		width:400px;
+		font-size:30px;
+	}  */
+	/* wrap을 해줘야 자식들의 너비나 높이 지정이 효력이 생김 */
+	
+	body{
+		background:pink;
+		display:flex;
+		flex-flow:column;		
+	}
+	
+	#header{
+		background:white;
+		height:70px;
+	}
+	
+	#visual{
+		
+		width:400px;
+		background:yellow;
+		height:100px;
+	}
+	
+	#main{
+		background:green;
+		min-height:300px;
+		display:flex;
+		flex-flow:row;
+	}
+		#aside{
+			background:purple;
+			width:210px;
+			order:2;
+		}
+		#body{
+			background:beige;
+			flex:1;
+			order:1;
+		}
+	
+	#footer{
+		background:blue;
+		height:100px;
+	} 
+	
+	/* Tablet & Desktop Device */
+	@media all and (min-width:768px) {
+		#aside{
+			background:red;
+		}
+	}
+	
+	/* Tablet Device */
+	@media all and (min-width:768px) and (max-width:1024px) {
+		#aside{
+			background:blue;
+		}
+		/* 햄버거버튼 */
+	}
+	
+	/* Desktop Device */
+	@media all and (min-width:1025px) {
+		#aside{
+			background:green;
+		}
+	}
+	
+	/* @media only screen and (max-width:500px){
+		#aside{
+			display:none;
+		}
+	} */
+	
+</style>
+</head>
+<body>
+	<header id="header">header</header>
+	<div id="visual"><div style="background:red;color:white;">동해물과 백두산이</div>visual</div>
+	<main id="main">
+		<div id="aside">aside</div>
+		<div id="body">body</div>
+	</main>
+	<footer id="footer">footer</footer>
+	
+	
+	<!-- <div id="container">
+		<div style="background:red;width:200px;height:150px;order:1;">1</div>
+		<div style="background:green;width:200px;height:200px;order:2;">2</div>
+		<div style="background:blue;width:200px;height:150px;order:4;">3</div>
+		<div style="background:yellow;width:200px;height:150px;order:3;">4</div>
+	</div> -->
+
+</body>
+</html>
+
+
+	

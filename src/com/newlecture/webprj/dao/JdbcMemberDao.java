@@ -118,6 +118,12 @@ public class JdbcMemberDao implements MemberDao {
 		return count;
 	}
 
+	@Override
+	public Member getMember(String mid) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
 
 //JDBC-데이터베이스 연결하기위한 라이브러리

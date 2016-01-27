@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+</head>
+
+<style>
+#banner{
+	width:600px;
+	height:300px;
+	position:relative;
+	background:beige;
+	
+}
+
+#banner div{
+	width:200px;
+	height:100px;
+	position:absolute;
+	
+	/* --------- */
+	left:0px;
+	top:0px;
+	opacity:0.1;
+	background:yellow;
+	z-index:1;
+	/* transition:1s; */
+}
+
+#banner div:nth-child(1){
+	background:red;
+}
+#banner div:nth-child(2){
+	background:green;
+}
+#banner div:nth-child(3){
+	background:blue;
+}
+
+#banner > div:hover{
+	/* width:300px;
+	height:150px;
+	left:150px;
+	top:25px;
+	border:1px solid black; */
+	
+	/* transform:rotate(30deg); */
+}
+
+/* .left{
+	left:50px;
+	top:50px;
+	background:red;
+	z-index:1;
+}
+.center{
+	left:200px;
+	top:100px;
+	background:green;
+	z-index:2;
+}
+.right{
+	left:350px;
+	top:50px;
+	background:blue;
+	z-index:1;
+} */
+
+
+</style>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script type="text/javascript">
+	
+	//$(window).bind("load",function(){};);
+	$(window).load(function(){
+		
+		//jQuery UI 예제
+		$("#banner div:first-child").draggable();
+		
+		
+		
+		//----------------
+		var styles=[
+					{
+						left:"50px",
+						top:"50px",
+						background:"red",
+						opacity:1,
+						"z-index":1
+					},
+					{
+						left:"200px",
+						top:"100px",
+						background:"green",
+						opacity:1,
+						"z-index":2
+					},
+					{
+						left:"350px",
+						top:"50px",
+						background:"blue",
+						opacity:1,
+						"z-index":1
+					}
+				]
+		
+		/* --------초기화---------- */
+		var divs=$("#banner div");
+		for(var i=0;i<divs.length;i++)
+		{
+			divs.eq(i).delay(i*500).animate(styles[i]);
+		}
+		
+		var off=0;
+		$("#btn-left").click(function(){
+			
+			/* var temp=styles[0];
+			styles[0]=styles[1];
+			styles[1]=styles[2];
+			styles[2]=temp;
+			
+			for(var i=0;i<divs.length;i++)
+			{	
+				divs.eq(i).animate(styles[i]);
+			}  */
+			
+			off++;
+			for(var i=0;i<divs.length;i++)
+			{	
+				divs.eq(i).animate(styles[(i+off)%3]);
+			}
+		})
+		
+		$("#btn-right").click(function(){
+	
+			//$.ajaxSettings.traditional=true;
+			
+			//$.post("../../customer/noticeRegAjax", {p:1}, function(data){	
+			$.post("../../customer/noticeRegAjax", {"p":["1","2","3"]}, function(data){
+				alert(data);
+			});
+			
+			
+			
+			
+			//------------ Ajax 방법1
+			/* $.ajax("../../customer/noticeJSON?p=1")
+			.done(function(data){
+				alert(data);
+			})
+			.fail(function(){
+				alert("......");
+			}); */
+		
+			//------------ Ajax 방법2
+			//$.getJSON("../../customer/noticeJSON?p=1",function(data){
+			/* $.getJSON("../../customer/noticeJSON", {p:1}, function(data){
+			
+				//var json=eval(data);
+				//alert(json[0].title);
+				//alert(data);
+				
+				alert(data[0].title);
+			}) */
+			
+			
+			
+			
+			
+			/* var temp=styles[2];
+			styles[2]=styles[1];
+			styles[1]=styles[0];
+			styles[0]=temp;
+			
+			for(var i=0;i<divs.length;i++)
+			{	
+				divs.eq(i).animate(styles[i]);
+			} */
+			
+			/* off=off+2;
+			for(var i=0;i<divs.length;i++)
+			{	
+				divs.eq(i).animate(styles[(i+off)%3]);
+			} */
+		})
+	});
+
+
+</script>
+
+<body>
+	<div>
+		<input id="btn-left" type="button" value="&laquo;"/>
+		<input id="btn-right" type="button" value="&raquo;"/>
+	</div>
+	<div id="banner">
+		<div class="left">dfdfdf</div>
+		<div class="center">zzz</div>
+		<div class="right">eee</div>
+	</div>
+</body>
+</html>

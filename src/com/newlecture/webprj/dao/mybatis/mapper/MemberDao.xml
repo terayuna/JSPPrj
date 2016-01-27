@@ -10,6 +10,11 @@
 		MEMBERS.*FROM MEMBERS WHERE ${param2} LIKE '%${param3}%') A
 		WHERE NUM BETWEEN 1+(#{param1}-1)*10 AND #{param1}*10
 	</select>
+	
+	<select id="getMember" resultType="com.newlecture.webprj.vo.Member">
+
+		SELECT * FROM MEMBERS WHERE MID=#{mid}
+	</select>
 
 	<update id="update">
 		UPDATE MEMBERS SET NAME = #{name}, PWD = #{pwd}, REGDATE = #{regDate}  WHERE MID= #{mid}

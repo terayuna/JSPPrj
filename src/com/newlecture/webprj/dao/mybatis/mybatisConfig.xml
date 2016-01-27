@@ -17,5 +17,6 @@
   <mappers>
     <mapper resource="com/newlecture/webprj/dao/mybatis/mapper/MemberDao.xml"/>
     <mapper resource="com/newlecture/webprj/dao/mybatis/mapper/NoticeDao.xml"/>
+    <mapper resource="com/newlecture/webprj/dao/mybatis/mapper/NoticeFileDao.xml"/>
   </mappers>
 </configuration>

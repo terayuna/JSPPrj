@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+
+	xmlns="http://www.springframework.org/schema/security"
+
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+
+	
+	<beans:bean name="failHandler" class="com.newlecture.webprj.handlers.NewlecAuthFailHandler"></beans:bean>
+	<beans:bean name="successHandler" class="com.newlecture.webprj.handlers.NewlecSuccessHandler"></beans:bean>
+
+	<!-- 서블릿을 만나기 전에 가로채는게, 논리적  web.xml에서 설정해주자-->
+	<http>
+		<form-login 
+			login-page="/joinus/login" 
+			default-target-url="/home/index" 
+			authentication-failure-url="/joinus/login?error=1"
+			authentication-failure-handler-ref="failHandler"
+			authentication-success-handler-ref="successHandler"/>
+			
+		<logout logout-success-url="/customer/notice"/>
+		<intercept-url pattern="/customer/noticeReg"/> <!-- access="ROLE_ADMIN"/> -->
+	</http>
+	
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT mid userid, pwd password, 1 enabled FROM Members WHERE mid=?"
+				authorities-by-username-query="SELECT mid userid, 'ROLE_ADMIN' authorities FROM Members WHERE mid=?"
+			
+			/>
+			<!-- <user-service>
+				<user name="dragon" password="111" authorities="ROLE_TEACHER"/>
+				<user name="newlec" password="111" authorities="ROLE_TEACHER, ROLE_ADMIN"/>
+			</user-service> -->
+		</authentication-provider>
+	</authentication-manager>
+	
+ </beans:beans>

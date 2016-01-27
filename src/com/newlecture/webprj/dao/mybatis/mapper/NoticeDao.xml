@@ -4,23 +4,54 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newlecture.webprj.dao.NoticeDao">
 
-	<select id="getNotices" resultType="com.newlecture.webprj.vo.Notice">
+<!-- 	<select id="getNotices" resultType="com.newlecture.webprj.vo.Notice">
 		SELECT * FROM(SELECT ROW_NUMBER() OVER (ORDER BY REGDATE DESC) NUM,
 		NoticeView.*FROM NoticeView WHERE ${param2} LIKE '%${param3}%') A
 		WHERE NUM BETWEEN 1+(#{param1}-1)*10 AND #{param1}*10
-	</select>
-
-	<update id="update">
-		UPDATE MEMBERS SET NAME = #{name}, PWD = #{pwd}, REGDATE = #{regDate}  WHERE MID= #{mid}
-	</update>
+	</select> -->
 	
-	<delete id="delete">
-		DELETE MEMBERS WHERE MID= #{mid}
-	</delete>
+<!-- 	<select id="getNotice" resultType="com.newlecture.webprj.vo.Notice">
+		SELECT * FROM NOTICES WHERE CODE = #{code}
+	</select> -->
+	
+	<select id="getLastCode" resultType="String">
+		SELECT ISNULL(MAX(CAST(CODE AS INT)),0) CODE FROM NOTICES
+	</select>
+	
+	
+	<select id="getPrevNotice" resultType="com.newlecture.webprj.vo.Notice">
 
-	<insert id="insert">
-		INSERT INTO MEMBERS(MID, PWD, NAME) VALUES(#{mid}, #{pwd}, #{name})
-	</insert>
+		SELECT TOP 1 * FROM NOTICES 
+		WHERE REGDATE &lt; (SELECT REGDATE FROM NOTICES WHERE CODE=#{code})
+		ORDER BY REGDATE DESC
+	</select>
+	
+	<select id="getNextNotice" resultType="com.newlecture.webprj.vo.Notice">
+		SELECT TOP 1 * FROM NOTICES 
+		WHERE REGDATE &gt; (SELECT REGDATE FROM NOTICES WHERE CODE=#{code}) 
+		ORDER BY REGDATE ASC
+	</select>
+	
+	<select id="getNoticeCount" resultType="Integer">
+		SELECT COUNT(CODE) FROM NOTICES 
+		WHERE ${param1} LIKE '%${param2}%'
+	
+	</select>
+	
+	
+	<delete id="delete" parameterType="String">
+		DELETE NOTICES WHERE CODE=#{code}
+	</delete>
+	
+
+<!-- 	<insert id="insert" parameterType="com.newlecture.webprj.vo.Notice">
+	
+		<selectKey keyProperty="code" order="BEFORE" resultType="String">
+			SELECT MAX(CAST(CODE AS INT)) CODE FROM NOTICES
+		</selectKey>
+		INSERT INTO NOTICES(CODE, TITLE, CONTENT, WRITER) 
+			VALUES(#{code}+1, #{title}, #{content}, #{writer})
+	</insert> -->
 
 </mapper>
 

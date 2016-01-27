@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="css3_animate.js"></script>
+
+<style>
+	
+	@keyframes ani-width{
+		from{
+			width:200px;
+		}
+		50%{
+			width:800px;
+		}
+		to{
+			width:400px;
+		}
+	}
+
+
+	#canvas img{
+		height:200px;
+		/* transition-duration:500ms;
+		transition-property:transform;
+		transition-delay:200ms; */
+		
+		/* transition:1s transform ease;
+		transition:1s transform cubic-bezier(0,1,1,0);
+		transition:3s margin-top steps(3,start);   */
+		
+		/* transform-origin:left center; */
+	}
+	
+	#canvas img:hover{
+		
+		animation-name:ani-width;
+		animation-duration:1s;
+		
+		/* height:400px; 
+		transform:rotate(-30deg);
+		margin-top:500px;*/
+		
+		/* opacity:0.5; */
+		/* transform:rotate(7.5deg); */
+		/* transform:scaleX(2); */
+		/* transform:scale(2,2); */
+	}
+</style>
+</head>
+<body>
+	
+	<div id="canvas">
+		<img src="image1.jpg"/>
+		<img src="image2.jpg"/>
+		<img src="image3.jpg"/>
+	</div>
+	
+	<div>
+		<input type="button" value="회전"/>
+	</div>
+</body>
+</html>

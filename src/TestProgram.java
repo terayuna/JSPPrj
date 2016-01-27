@@ -9,8 +9,30 @@ import com.newlecture.webprj.vo.Notice;
 
 public class TestProgram {
 
-	public static void main(String[] args) throws SQLException, ParseException {
+	public static void main(String[] args) throws SQLException, ParseException, ZeroChoice {
 
+	/*	int x=3;
+		int y=0;
+		int z=0;
+		
+
+		try {
+			z=Calculator.div(x, y);
+		}
+		catch(ZeroChoice e){
+			
+		}
+		catch(Exception e) {
+			// TODO Auto-generated catch block	
+		}
+		finally{
+			
+		}
+	*/
+	
+		
+		
+		
 		//JdbcMemberDao dao = new JdbcMemberDao();
 		
 		/*SqlSessionFactory ssf = NewlecSqlSessionFactoryBuilder.getSqlSessionFactory();
@@ -46,13 +68,21 @@ public class TestProgram {
 		//session.close();  //session 종료는 맨 마지막에만 가능
 */		
 		
-		NoticeDao dao = new MyBatisNoticeDao();
+		
+		
+		
+	/*	NoticeDao dao = new MyBatisNoticeDao();
 		List<Notice>list = dao.getNotices(1, "Title","");
 		for(Notice n: list)
 		{
 		System.out.printf("title : %s, code: %s, writer: %s, hit : %d\n", 
 				n.getTitle(),n.getCode(),n.getWriter(),n.getHit());
 		}
+		Notice n = dao.getNotice("1");*/
+		
+
+		
+		
 	}
 
 }  
