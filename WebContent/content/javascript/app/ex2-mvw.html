@@ -18,10 +18,19 @@
 		$scope.x = 0;
 		$scope.y = 0;
 		$scope.result = 0;
+		
+		$scope.$watch("x", xChanged);
 		$scope.okButtonClick = function(){
 			var x = parseInt($scope.x);
 			var y = parseInt($scope.y);
 			//resultText.value = x + y; //모델을 이용하면 이런 방식은 필요 없음(UI조작이 없어짐)
+			$scope.result = x + y;
+		};
+		
+		function xChanged(){
+			var x = parseInt($scope.x);
+			var y = parseInt($scope.y);
+		
 			$scope.result = x + y;
 		};
 	
@@ -39,7 +48,8 @@
 	<input id="btn-ok" type="button" value="계산" ng-click="okButtonClick()"/>
 	<!-- <input id="result" type="text" value={{result}} dir="rtl"/> -->
 	<!-- <span ng-bind="result"></span> -->
-	<!-- <span ng-bind-template="result is {{result}}"></span> -->
-	<span ng-bind-html="<span style=color:red;>result</span> is {{result}}"></span>
+	<span ng-bind-template="result is {{result}}"></span>
+	<!-- <span ng-bind-html="result"></span> --> 
+	<!-- '<span style='color:red;'>result</span> is ' -->
 </body>
 </html>
