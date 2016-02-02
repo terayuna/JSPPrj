@@ -1,10 +1,7 @@
-﻿var noticeModule = angular.module("notice", []);
+﻿var noticeModule = angular.module("notice", ["ngAnimate"]);
 
 noticeModule.controller('notice-controller', function ($scope, $http) {
     	
-	var test="hello world";
-	$scope.aa=test;
-	
 	/*var list = [
         { "id": "1", "title": "새로운 서비스가 시작됩니다.", "writer": "newlec", "regdate": "2016-02-16", "hit": 12, "img":"icon-recommend.png" },
         { "id": "2", "title": "새로운 강의가 업로드 되었습니다.", "writer": "newlec", "regdate": "2016-02-22", "hit": 72, "img":"icon-recommend.png" },
@@ -81,10 +78,45 @@ noticeModule.controller('notice-controller', function ($scope, $http) {
 	
 	$scope.btnDelClicked = function(){
 		
-		var cnt = 0;
-		for(var i=0; i<$scope.list.length; i++)
+		var codes = [];
+		for(var i=0; i<$scope.list.length; i++){
 			if($scope.list[i].isChecked)
-				cnt++;
-		alert(cnt);
+				codes.push($scope.list[i].code);
+		}
+		
+		$http({
+			  method: 'POST',
+			  url: '../../../../customer/noticeDelAjax',
+			  data: codes,
+			  headers: {'Content-Type':'application/json; charset=utf-8'}
+			}).then(function successCallback(response) {
+				if(response.data=="ok"){
+					$http({
+						  method: 'GET',
+						  url: '../../../../customer/noticeJSON?p=1'
+						}).then(function successCallback(response) {
+						      $scope.list = response.data;
+						      
+						      for(var i=0; i<$scope.list.length; i++)
+						    	  $scope.list[i].isChecked = false;
+						}, function errorCallback(response) {
+							  alert("실패");
+						});
+						
+				}
+			}, function errorCallback(response) {
+				  alert("삭제실패");
+			});
+		
+	};
+	
+	$scope.allCheckClick = function(){
+		
+		for(var i=0; i<$scope.list.length; i++){
+			if($scope.allCheck)
+				$scope.list[i].isChecked = true;
+			else
+				$scope.list[i].isChecked = false;
+		}
 	};
 });

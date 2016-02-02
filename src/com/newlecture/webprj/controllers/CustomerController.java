@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.gson.Gson;
 import com.newlecture.webprj.dao.NoticeDao;
 import com.newlecture.webprj.dao.mybatis.MyBatisNoticeDao;
 import com.newlecture.webprj.vo.Notice;
@@ -101,12 +102,17 @@ public class CustomerController {
       
       List<Notice> list=noticeDao.getNotices(page, "TITLE", "");
       
-      StringBuilder builder=new StringBuilder();
+      Gson gson = new Gson();
+      out.println(gson.toJson(list));
+      
+      /*StringBuilder builder=new StringBuilder();
       builder.append("[");
       
       for(int i=0;i<list.size();i++)
       {
          Notice n=list.get(i);
+         
+         //builder.append(gson.toJson(n));
          
          if(i==list.size()-1)
             builder.append(String.format("{\"code\":\"%s\", \"title\":\"%s\", \"writer\":\"%s\"}",
@@ -123,10 +129,9 @@ public class CustomerController {
       try {
          Thread.sleep(3000);
       } catch (InterruptedException e) {
-         // TODO Auto-generated catch block
          e.printStackTrace();
       }
-      out.println(builder.toString());
+      out.println(builder.toString());*/
    }
    
    
@@ -196,6 +201,24 @@ public class CustomerController {
       
       return "customer/noticeEdit";  // view를 제공해야 하는데,,,
    }
+   
+   @RequestMapping("noticeDelAjax")
+   //키와 값이 쌍으로 오는 urlEncoding으로 와야하는데
+   //키가 없이 몸뚱아리만 오면 안되므로 
+   //이럴 땐 @RequestBody를 써서 몸통을 그대로 쓰도록
+   public void noticeDelAjax(@RequestBody String[] codes, PrintWriter out)
+   {
+	   int result=0;
+	   
+	   for(int i=0; i<codes.length; i++)
+		result += noticeDao.delete(codes[i]);
+	  
+      //데이터를 처리하는 코드
+	   if(result==codes.length)
+		   out.write("ok");
+	   else
+		   out.write("error");
+   }	
    
    @RequestMapping("noticeDel")
    public String noticeDel(String c)
