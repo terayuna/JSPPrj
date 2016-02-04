@@ -1,9 +1,13 @@
 package com.newlecture.webprj.controllers;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 import com.newlecture.webprj.dao.NoticeDao;
@@ -225,5 +231,42 @@ public class CustomerController {
    {
       noticeDao.delete(c);
       return "redirect:notice";  //뷰로 인식하지 못하도록(뷰로 가로 가면 데이터 없이 가므로)
+   }
+   
+ //단일 파일 업로드를 위한 서버 코드 with 스프링
+   @RequestMapping(value="upload", method=RequestMethod.POST)
+   public @ResponseBody String upload(@RequestParam("notice-title") String title, MultipartFile file,
+         HttpServletRequest request) throws IOException{   //출력도구(ex>PrintWriter)를 매개변수로 써주지 말것
+            
+      //1.파일을 저장할 디렉토리와 경로 설정
+      ServletContext context=request.getServletContext();
+      String rootPath=context.getRealPath("/customer")+"\\upload";  //현재디렉토리에 대한 물리경로 (개발경로가 아닌 배포경로)
+      
+      File f = new File(rootPath);
+      if (!f.exists()) {
+         if (f.mkdir()) {
+            System.out.println("Directory is created!");
+         } else {
+            System.out.println("Failed to create directory!");
+         }
+      }
+      
+      System.out.println("test");
+      
+      //2.전송된 파일을 저장하는 로직
+      String fileName=file.getOriginalFilename();
+      //file.getInputStream();
+      byte[] buf = file.getBytes();  // 배열로 받으면 서버에 부담을 줄쑤가 있음
+      
+      //2-1.저장할 파일이 있는지 등의 검사를 해야함..그치만 일단 생략
+      //2-2.파일 저장
+      FileOutputStream fout=new FileOutputStream(rootPath+File.separator+fileName);
+      fout.write(buf);
+      fout.close();
+      
+      //System.out.println(rootPath);
+      
+      //return "redirect:../content/javascript/app/views/fileupload.html";
+      return "You successfully uploaded file="+rootPath+File.separator+fileName;
    }
 }
